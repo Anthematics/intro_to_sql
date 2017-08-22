@@ -1,11 +1,40 @@
+-- ex 1-------------------------------------------
 select*from robots where source= 'Star Wars';
+--------------------------------------------------------ex 2
 select*from robots where source= 'Star Wars' and personality ='anxious';
+ ----- ex 3-------------------------------------------------------------
 select* from recipes where nut_free = true;
-Count the number of recipes that are gluten free but not vegetarian.
+----------------------------- -- ex 4
 select count(*) from recipes where gluten_free=true and vegetarian =false
-Select max (number_of_legs ) from animals;
+-- - -----------ex 5 --
+select max (number_of_legs) from animals
 select name from animals where number_of_legs=8
+---ex 6 ---
+select min (mins_to_play) from board_games;
+select name from board_games where mins_to_play=15;
+-- -------------------------------------ex 7-----
 
-SELECT MAX(column_name)
-FROM table_name
-WHERE condition;
+select max(minutes_required) from recipes
+select name from recipes where (minutes_required = 390)
+-- ALTERNATE ANSWER----
+Select name from recipes where minutes_required = (select max(minutes_required) from recipes)
+--^(choose a name (so we see the name) where minutes_required=the max)
+---------------------------------------------^^IN BRACKETS (select the max minutes require from recipes)
+	-- ex 8 ---------------------------------
+-- Find all the robots whose name starts with the letter M.
+select*from robots where name like'M%'
+
+
+-- percent sign allows my sql to realize there may be more letters after M
+
+
+-------- ex9 -----------------
+-- Count the number of board games that can be played by 8 people.
+select* from board_games where max_players >= 8;
+
+--ex 10 ------------------------
+-select name from animals where swimming=true and egg_laying=true;
+-- -------------------------------ex 11---------------
+select name from animals where swimming=true and egg_laying=true and flying=false;
+-------------------------------ex12-----------------------------.
+select name from board_games where max_players =(select max(max_players) from board_games);
